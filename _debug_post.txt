@@ -1,0 +1,209 @@
+==== 2026-02-13 00:21:51 ====
+Array
+(
+    [nome] => ALLAN DA SILVA GEHLEN
+    [perfil] => jovem
+    [ramo] => lobinho
+    [cpf] => 039.153.219-74
+    [data_nascimento] => 
+    [email] => admin@biblioteca.com
+    [celular] => (45) 99801-2638
+    [senha1] => e3e3e3211zA@
+    [senha2] => e3e3e3211zA@
+    [lgpd] => 1
+)
+
+==== 2026-02-13 00:24:08 ====
+Array
+(
+    [nome] => Lilian Mara Mazin
+    [perfil] => jovem
+    [ramo] => lobinho
+    [cpf] => 039.153.219-74
+    [data_nascimento] => 
+    [email] => admin@biblioteca.com
+    [celular] => (45) 99801-2638
+    [senha1] => e3e3e3211zA@
+    [senha2] => e3e3e3211zA@
+    [lgpd] => 1
+)
+
+==== 2026-02-13 00:31:16 ====
+Array
+(
+    [nome] => Joaum da silva souza
+    [perfil] => chefe
+    [ramo] => pioneiro
+    [cpf] => 886.449.109-06
+    [data_nascimento] => 
+    [email] => admin@biblioteca.com
+    [celular] => (45) 99801-2638
+    [senha1] => e3e3e3211zA@
+    [senha2] => e3e3e3211zA@
+    [lgpd] => 1
+)
+
+==== 2026-02-13 00:36:35 ====
+Array
+(
+    [nome] => Joaum da silva souza
+    [perfil] => adm
+    [ramo] => senior
+    [cpf] => 107.133.539-10
+    [data_nascimento] => 
+    [email] => admin@biblioteca.com
+    [celular] => 
+    [senha1] => e3e3e3211zA@
+    [senha2] => e3e3e3211zA@
+    [lgpd] => 1
+)
+
+==== 2026-02-13 00:45:28 ====
+Array
+(
+    [nome] => Joaum da silva souza
+    [perfil] => jovem
+    [ramo] => lobinho
+    [cpf] => 886.449.109-06
+    [data_nascimento] => 
+    [email] => allanbik@gmail.com
+    [celular] => (45) 99801-2638
+    [senha1] => W3b@123
+    [senha2] => W3b@123
+    [lgpd] => 1
+)
+
+==== 2026-02-13 01:00:23 ====
+Array
+(
+    [nome] => ICV INDOCIANINA VERDE
+    [perfil] => chefe
+    [ramo] => lobinho
+    [cpf] => 039.078.459-10
+    [data_nascimento] => 
+    [email] => admin@biblioteca.com
+    [celular] => 459880126
+    [senha1] => 123456
+    [senha2] => 123456
+    [lgpd] => 1
+)
+
+==== 2026-02-13 01:35:09 ====
+Array
+(
+    [nome] => ALLAN DA SILVA GEHLEN
+    [perfil] => chefe
+    [ramo] => chefia
+    [cpf] => 039.153.219-74
+    [data_nascimento] => 2023-10-24
+    [email] => admin@biblioteca.com
+    [celular] => (45) 99801-2638
+    [senha1] => W3b@123
+    [senha2] => W3b@123
+    [lgpd] => 1
+)
+
+==== 2026-02-13 23:57:06 ====
+Array
+(
+    [nome] => Pedro Henrique Souza Lima
+    [perfil] => jovem
+    [ramo] => lobinho
+    [cpf] => 798.017.395-33
+    [data_nascimento] => 2020-09-15
+    [email] => pedro.lobinho01@example.com
+    [celular] => (45) 98801-2639
+    [senha1] => Teste@1234
+    [senha2] => Teste@1234
+    [lgpd] => 1
+)
+
+==== 2026-02-14 00:10:14 ====
+Array
+(
+    [nome] => Mariana Alves Ferreira
+    [perfil] => jovem
+    [ramo] => senior
+    [cpf] => 721.267.851-14
+    [data_nascimento] => 2019-05-13
+    [email] => admin@biblioteca.com
+    [celular] => (45) 9999-9999
+    [senha1] => Escoteiro#2026
+    [senha2] => Escoteiro#2026
+    [lgpd] => 1
+)
+
+==== 2026-02-14 00:56:42 ====
+Array
+(
+    [nome] => Beatriz Vitoria Paixão de Oliveira
+    [perfil] => jovem
+    [ramo] => pioneiro
+    [cpf] => 111.108.879-90
+    [data_nascimento] => 2005-01-22
+    [email] => beatrizvpdo@gmail.com
+    [celular] => (45) 99148-0107
+    [senha1] => 223095#Bk
+    [senha2] => 223095#Bk
+    [lgpd] => 1
+)
+
+==== 2026-02-21 02:26:40 ====
+Array
+(
+    [nome] => Prof. Fabio
+    [perfil] => adm
+    [ramo] => senior
+    [cpf] => 039.999.222-11
+    [data_nascimento] => 1988-10-23
+    [email] => allan@unimedcascavel.coop.br
+    [celular] => (45) 98801-2635
+    [senha1] => T3este@231o
+    [senha2] => T3este@231o
+    [lgpd] => 1
+)
+
+==== 2026-02-21 02:29:51 ====
+Array
+(
+    [nome] => Joao da silva
+    [perfil] => chefe
+    [ramo] => lobinho
+    [cpf] => 500.051.640-01
+    [data_nascimento] => 2000-10-24
+    [email] => admin@biblioteca.com
+    [celular] => (45) 98801-2639
+    [senha1] => T3este@231o
+    [senha2] => T3este@231o
+    [lgpd] => 1
+)
+
+==== 2026-02-21 02:31:09 ====
+Array
+(
+    [nome] => jauam da silva
+    [perfil] => chefe
+    [ramo] => senior
+    [cpf] => 500.051.640-01
+    [data_nascimento] => 2000-10-23
+    [email] => teste@teste.com.br
+    [celular] => (45) 98801-2636
+    [senha1] => T3este@231o
+    [senha2] => T3este@231o
+    [lgpd] => 1
+)
+
+==== 2026-02-27 23:42:15 ====
+Array
+(
+    [nome] => Teste Cadastro Novo
+    [perfil] => jovem
+    [ramo] => lobinho
+    [cpf] => 000.111.222-33
+    [email] => teste.novo@example.com
+    [data_nascimento] => 2010-05-15
+    [senha1] => Senha@123
+    [senha2] => Senha@123
+    [lgpd] => 1
+)
+

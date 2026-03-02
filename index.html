@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ordem de Lis 272/PR — Cadastro Digital</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Ícones Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- CSS Personalizado (Tema Escoteiro) -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Redireciona automaticamente para login após alguns segundos (comentado p/ testar layout) -->
+  <!-- <meta http-equiv="refresh" content="6;url=login.html"> -->
+</head>
+
+<body>
+
+  <div class="container py-5">
+    <div class="row justify-content-center align-items-center">
+
+      <!-- Lado Esquerdo: Boas vindas / Intro -->
+      <div class="col-12 col-lg-6 mb-4 mb-lg-0 text-center text-lg-start">
+        <img src="imagens/logo.jpg" alt="Logo Ordem de Lis" class="brand-logo-img mb-4 d-inline-block d-lg-none">
+
+        <h1 class="display-5 fw-bold text-scout-blue mb-3">Sempre Alerta! ⚜️</h1>
+        <p class="lead text-muted mb-4">
+          Bem-vindo ao sistema de gestão digital do <strong>Grupo Escoteiro Ordem de Lis 272/PR</strong>.
+          Aqui você realiza seu cadastro, atualiza ficha médica e acompanha sua vida escoteira.
+        </p>
+
+        <div class="d-grid gap-3 d-sm-flex justify-content-center justify-content-lg-start">
+          <a href="login.html" class="btn btn-primary btn-lg px-4 gap-3">
+            <i class="bi bi-box-arrow-in-right"></i> Entrar
+          </a>
+          <a href="registrar.html" class="btn btn-outline-primary btn-lg px-4">
+            Criar Conta
+          </a>
+        </div>
+      </div>
+
+      <!-- Lado Direito: Card / Imagem (usando Card por enquanto) -->
+      <div class="col-12 col-lg-5 offset-lg-1">
+        <div class="card shadow-lg bg-white">
+          <div class="card-body p-4 text-center">
+            <img src="imagens/logo.jpg" alt="Logo Ordem de Lis" class="img-fluid rounded mb-3"
+              style="max-height: 180px;">
+            <p class="small text-muted">
+              "O Escoteiro é limpo em corpo e alma."
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Features Section -->
+    <div class="row g-4 mt-5">
+      <div class="col-12 col-md-4">
+        <div class="feature-box text-center">
+          <div class="feature-icon"><i class="bi bi-shield-lock"></i></div>
+          <h5 class="fw-bold">Segurança</h5>
+          <p class="small text-muted mb-0">Seus dados protegidos e acesso exclusivo via CPF e senha pessoal.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="feature-box text-center">
+          <div class="feature-icon"><i class="bi bi-file-earmark-medical"></i></div>
+          <h5 class="fw-bold">Ficha Médica</h5>
+          <p class="small text-muted mb-0">Mantenha suas informações de saúde sempre atualizadas digitalmente.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="feature-box text-center">
+          <div class="feature-icon"><i class="bi bi-tree"></i></div>
+          <h5 class="fw-bold">Sustentabilidade</h5>
+          <p class="small text-muted mb-0">Menos papel, mais agilidade. O planeta e a secretaria agradecem!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center footer-text">
+      © <span id="ano"></span> Grupo Escoteiro Ordem de Lis 272/PR • Filiado à UEB
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('ano').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

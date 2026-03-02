@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redefinir senha — Ordem de Lis 272/PR</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      min-height: 100vh;
+      background: radial-gradient(1200px 600px at 20% 10%, #d1e7dd 0%, #f6f7fb 45%, #eef2ff 100%);
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0d6efd;
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(13, 110, 253, .25);
+    }
+
+    .card {
+      border: 0;
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .08);
+    }
+
+    .small-muted {
+      color: #6c757d;
+      font-size: .92rem;
+    }
+
+    .req::after {
+      content: " *";
+      color: #dc3545;
+    }
+
+    .pw-rules li {
+      margin-bottom: 4px;
+    }
+
+    .pw-ok {
+      color: #198754;
+    }
+
+    .pw-bad {
+      color: #dc3545;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-7 col-lg-6">
+
+        <div class="card">
+          <div class="card-body p-4 p-md-5">
+
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="brand-badge">272</div>
+              <div>
+                <div class="h5 mb-0">Redefinir senha</div>
+                <div class="small-muted">Ordem de Lis 272/PR • UEB</div>
+              </div>
+            </div>
+
+            <p class="small-muted mb-4">
+              Informe o <strong>código/token</strong> recebido por e-mail e defina uma nova senha.
+            </p>
+
+            <div id="alertaErro" class="alert alert-danger d-none" role="alert"></div>
+            <div id="alertaOk" class="alert alert-success d-none" role="alert">
+              ✅ Senha redefinida com sucesso! Agora você pode entrar no sistema.
+            </div>
+
+            <!-- No futuro: action="redefinir_senha.php" -->
+            <form id="formRedefinir" action="redefinir_senha.php" method="post" novalidate>
+
+
+              <div class="mb-3">
+                <label class="form-label req" for="token">Código/Token</label>
+                <input class="form-control form-control-lg" id="token" name="token" autocomplete="one-time-code"
+                  placeholder="Ex.: 7F3A9C" required />
+                <div class="invalid-feedback">Informe o código/token.</div>
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label req" for="senha1">Nova senha</label>
+                <div class="input-group input-group-lg">
+                  <input class="form-control" id="senha1" name="senha1" type="password" autocomplete="new-password"
+                    placeholder="Digite a nova senha" required />
+                  <button class="btn btn-outline-secondary" type="button" id="toggle1"
+                    aria-label="Mostrar senha">👁</button>
+                  <div class="invalid-feedback">Informe uma senha válida.</div>
+                </div>
+
+                <div class="mt-2">
+                  <div class="progress" style="height:10px;">
+                    <div id="pwBar" class="progress-bar" role="progressbar" style="width:0%"></div>
+                  </div>
+                  <div id="pwHint" class="small-muted mt-1">Força da senha: —</div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label req" for="senha2">Confirmar senha</label>
+                <div class="input-group input-group-lg">
+                  <input class="form-control" id="senha2" name="senha2" type="password" autocomplete="new-password"
+                    placeholder="Repita a nova senha" required />
+                  <button class="btn btn-outline-secondary" type="button" id="toggle2"
+                    aria-label="Mostrar senha">👁</button>
+                  <div class="invalid-feedback">As senhas não conferem.</div>
+                </div>
+              </div>
+
+              <div class="border rounded p-3 bg-white mb-3">
+                <div class="fw-semibold mb-2">Regras mínimas de senha</div>
+                <ul class="pw-rules mb-0" id="pwRules">
+                  <li data-rule="len" class="pw-bad">Mínimo 8 caracteres</li>
+                  <li data-rule="upper" class="pw-bad">Pelo menos 1 letra maiúscula (A-Z)</li>
+                  <li data-rule="lower" class="pw-bad">Pelo menos 1 letra minúscula (a-z)</li>
+                  <li data-rule="num" class="pw-bad">Pelo menos 1 número (0-9)</li>
+                  <li data-rule="sym" class="pw-bad">Pelo menos 1 símbolo (!@#...)</li>
+                </ul>
+              </div>
+
+              <button class="btn btn-primary btn-lg w-100" type="submit">Salvar nova senha</button>
+
+              <div class="text-center mt-3">
+                <a class="link-primary text-decoration-none" href="login.html">← Voltar ao login</a>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <div class="text-center small-muted mt-3">
+          © <span id="ano"></span> Grupo Escoteiro Ordem de Lis 272/PR
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    const token = document.getElementById('token');
+    const s1 = document.getElementById('senha1');
+    const s2 = document.getElementById('senha2');
+
+    const alertaOk = document.getElementById('alertaOk');
+    const alertaErro = document.getElementById('alertaErro');
+
+    const pwBar = document.getElementById('pwBar');
+    const pwHint = document.getElementById('pwHint');
+    const rulesEl = document.getElementById('pwRules');
+
+    function setRule(rule, ok) {
+      const li = rulesEl.querySelector(`li[data-rule="${rule}"]`);
+      if (!li) return;
+      li.classList.toggle('pw-ok', ok);
+      li.classList.toggle('pw-bad', !ok);
+    }
+
+    function evalPassword(pw) {
+      const r = {
+        len: pw.length >= 8,
+        upper: /[A-Z]/.test(pw),
+        lower: /[a-z]/.test(pw),
+        num: /[0-9]/.test(pw),
+        sym: /[^A-Za-z0-9]/.test(pw)
+      };
+      const score = Object.values(r).filter(Boolean).length; // 0..5
+      return { r, score };
+    }
+
+    function updateStrength() {
+      const pw = s1.value || '';
+      const { r, score } = evalPassword(pw);
+
+      setRule('len', r.len);
+      setRule('upper', r.upper);
+      setRule('lower', r.lower);
+      setRule('num', r.num);
+      setRule('sym', r.sym);
+
+      const pct = (score / 5) * 100;
+      pwBar.style.width = pct + '%';
+
+      const label = ['Muito fraca', 'Fraca', 'Média', 'Boa', 'Forte', 'Muito forte'][score] || '—';
+      pwHint.textContent = 'Força da senha: ' + label;
+    }
+
+    s1.addEventListener('input', () => {
+      updateStrength();
+      if (s2.value) s2.dispatchEvent(new Event('input'));
+    });
+
+    s2.addEventListener('input', () => {
+      const ok = s2.value === s1.value && s2.value.length > 0;
+      s2.classList.toggle('is-invalid', !ok);
+      s2.classList.toggle('is-valid', ok);
+    });
+
+    function toggle(btnId, input) {
+      const btn = document.getElementById(btnId);
+      btn.addEventListener('click', () => {
+        const isPass = input.type === 'password';
+        input.type = isPass ? 'text' : 'password';
+        btn.textContent = isPass ? '🙈' : '👁';
+        btn.setAttribute('aria-label', isPass ? 'Ocultar senha' : 'Mostrar senha');
+      });
+    }
+    toggle('toggle1', s1);
+    toggle('toggle2', s2);
+
+    document.getElementById('formRedefinir').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      alertaOk.classList.add('d-none');
+      alertaErro.classList.add('d-none');
+
+      const tokOk = (token.value || '').trim().length >= 4;
+      token.classList.toggle('is-invalid', !tokOk);
+
+      const { score } = evalPassword(s1.value || '');
+      const senhaOk = score >= 4; // exige 4 de 5 regras
+      s1.classList.toggle('is-invalid', !senhaOk);
+
+      const confOk = s2.value === s1.value && s2.value.length > 0;
+      s2.classList.toggle('is-invalid', !confOk);
+
+      if (!tokOk || !senhaOk || !confOk) {
+        alertaErro.textContent = 'Verifique o token e as regras da senha.';
+        alertaErro.classList.remove('d-none');
+        return;
+      }
+
+      // Aqui será o POST real + validação token (no PHP)
+      alertaOk.classList.remove('d-none');
+      e.target.reset();
+      pwBar.style.width = '0%';
+      pwHint.textContent = 'Força da senha: —';
+      ['len', 'upper', 'lower', 'num', 'sym'].forEach(k => setRule(k, false));
+      token.classList.remove('is-invalid');
+      s1.classList.remove('is-invalid', 'is-valid');
+      s2.classList.remove('is-invalid', 'is-valid');
+    });
+
+    updateStrength();
+  </script>
+</body>
+
+</html>

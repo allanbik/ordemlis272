@@ -1,0 +1,163 @@
+/* CSS - Tema Escoteiro Ordem de Lis 272/PR */
+/* Importando fonte moderna 'Poppins' */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    /* Paleta de Cores Escoteira */
+    --scout-blue: #002D62;
+    /* Azul Marinho Profundo */
+    --scout-blue-light: #004B8D;
+    --scout-green: #006B3F;
+    /* Verde Musgo/Escoteiro */
+    --scout-yellow: #FFCE00;
+    /* Amarelo/Dourado para destaques (Lenço/Flor de Lis) */
+    --scout-bg: #F0F4F8;
+    /* Fundo claro azulado */
+    --text-dark: #333333;
+    --text-muted: #666666;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--scout-bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+/* Fundo especial para páginas de autenticação */
+.scout-auth-bg {
+    background-color: var(--scout-bg);
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(0, 45, 98, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 107, 63, 0.05) 0%, transparent 20%);
+    background-attachment: fixed;
+}
+
+/* Utilitários de fundo */
+.bg-scout-blue {
+    background-color: var(--scout-blue) !important;
+    color: white;
+}
+
+.bg-scout-green {
+    background-color: var(--scout-green) !important;
+    color: white;
+}
+
+.text-scout-blue {
+    color: var(--scout-blue) !important;
+}
+
+/* Botões Personalizados */
+.btn-primary {
+    background-color: var(--scout-blue);
+    border-color: var(--scout-blue);
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--scout-blue-light);
+    border-color: var(--scout-blue-light);
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+    color: var(--scout-blue);
+    border-color: var(--scout-blue);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--scout-blue);
+    color: white;
+}
+
+/* Cards com estilo moderno */
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 45, 98, 0.08);
+    /* Sombra azulada suave */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    /* Leve efeito de elevação ao passar o mouse */
+    transform: translateY(-3px);
+}
+
+/* Formulários */
+.form-control,
+.form-select {
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #dfe3e8;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--scout-blue);
+    box-shadow: 0 0 0 0.25rem rgba(0, 45, 98, 0.15);
+}
+
+/* Badge da marca/Logo */
+.brand-logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.brand-logo-img {
+    max-height: 80px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Landing Page Features */
+.feature-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    height: 100%;
+    border-bottom: 4px solid var(--scout-green);
+    /* Detalhe verde na base */
+    transition: all 0.3s;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--scout-blue);
+}
+
+/* Navbar (Painel) */
+.navbar-scout {
+    background-color: var(--scout-blue);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-scout .navbar-brand {
+    color: white;
+    font-weight: 700;
+}
+
+.navbar-scout .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-scout .nav-link:hover {
+    color: white;
+}
+
+/* Footer */
+.footer-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 2rem;
+}

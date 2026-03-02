@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recuperar senha — Ordem de Lis 272/PR</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      min-height: 100vh;
+      background: radial-gradient(1200px 600px at 20% 10%, #fff3cd 0%, #f6f7fb 45%, #eef2ff 100%);
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #198754;
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(25, 135, 84, .25);
+    }
+
+    .card {
+      border: 0;
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .08);
+    }
+
+    .small-muted {
+      color: #6c757d;
+      font-size: .92rem;
+    }
+
+    .req::after {
+      content: " *";
+      color: #dc3545;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-7 col-lg-6">
+
+        <div class="card">
+          <div class="card-body p-4 p-md-5">
+
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="brand-badge">272</div>
+              <div>
+                <div class="h5 mb-0">Recuperar senha</div>
+                <div class="small-muted">Ordem de Lis 272/PR • UEB</div>
+              </div>
+            </div>
+
+            <p class="small-muted mb-4">
+              Informe seu <strong>CPF</strong> e <strong>e-mail</strong> cadastrado.
+              Se os dados conferirem, você receberá um link/código para redefinir a senha.
+            </p>
+
+            <div id="alertaErro" class="alert alert-danger d-none" role="alert"></div>
+            <div id="alertaOk" class="alert alert-success d-none" role="alert">
+              ✅ Se os dados existirem no cadastro, enviaremos as instruções para o seu e-mail.
+              <div class="mt-2">
+                <a class="btn btn-outline-success btn-sm" href="redefinir_senha.html">Já tenho o código/token</a>
+              </div>
+            </div>
+
+            <!-- Quando integrar com PHP: action="recuperar_senha.php" -->
+            <form id="formRecuperar" action="recuperar_senha.php" method="post" novalidate>
+
+
+              <div class="mb-3">
+                <label class="form-label req" for="cpf">CPF</label>
+                <input class="form-control form-control-lg" id="cpf" name="cpf" inputmode="numeric"
+                  autocomplete="username" placeholder="000.000.000-00" maxlength="14" required />
+                <div class="invalid-feedback">Informe um CPF válido.</div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label req" for="email">E-mail cadastrado</label>
+                <input class="form-control form-control-lg" id="email" name="email" type="email" autocomplete="email"
+                  placeholder="seuemail@dominio.com" required />
+                <div class="invalid-feedback">Informe um e-mail válido.</div>
+              </div>
+
+              <button class="btn btn-success btn-lg w-100" type="submit">Enviar instruções</button>
+
+              <div class="text-center mt-3">
+                <a class="link-primary text-decoration-none" href="login.html">← Voltar ao login</a>
+              </div>
+
+              <hr class="my-4">
+
+              <div class="small-muted">
+                <strong>Dica:</strong> por segurança, o sistema não informa se o CPF/e-mail existe ou não.
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <div class="text-center small-muted mt-3">
+          © <span id="ano"></span> Grupo Escoteiro Ordem de Lis 272/PR
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    // Máscara CPF
+    const cpf = document.getElementById('cpf');
+    cpf.addEventListener('input', () => {
+      let v = cpf.value.replace(/\D/g, '').slice(0, 11);
+      v = v.replace(/(\d{3})(\d)/, '$1.$2');
+      v = v.replace(/(\d{3})(\d)/, '$1.$2');
+      v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      cpf.value = v;
+    });
+
+    function cpfValido(cpfStr) {
+      const s = (cpfStr || '').replace(/\D/g, '');
+      if (s.length !== 11) return false;
+      if (/^(\d)\1+$/.test(s)) return false;
+
+      let soma = 0, resto = 0;
+
+      for (let i = 1; i <= 9; i++) soma += parseInt(s.substring(i - 1, i)) * (11 - i);
+      resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      if (resto !== parseInt(s.substring(9, 10))) return false;
+
+      soma = 0;
+      for (let i = 1; i <= 10; i++) soma += parseInt(s.substring(i - 1, i)) * (12 - i);
+      resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      if (resto !== parseInt(s.substring(10, 11))) return false;
+
+      return true;
+    }
+
+    const form = document.getElementById('formRecuperar');
+    const email = document.getElementById('email');
+    const alertaOk = document.getElementById('alertaOk');
+    const alertaErro = document.getElementById('alertaErro');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const cpfOk = cpfValido(cpf.value);
+      const emailOk = (email.value || '').trim().length > 3 && email.checkValidity();
+
+      cpf.classList.toggle('is-invalid', !cpfOk);
+      email.classList.toggle('is-invalid', !emailOk);
+
+      alertaErro.classList.add('d-none');
+      alertaOk.classList.add('d-none');
+
+      if (!cpfOk || !emailOk) {
+        alertaErro.textContent = 'Verifique os campos obrigatórios e tente novamente.';
+        alertaErro.classList.remove('d-none');
+        return;
+      }
+
+      // Aqui será o POST real (PHP) quando integrar
+      alertaOk.classList.remove('d-none');
+      form.reset();
+    });
+  </script>
+</body>
+
+</html>
