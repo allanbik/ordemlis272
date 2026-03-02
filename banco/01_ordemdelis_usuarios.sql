@@ -7,11 +7,7 @@
 -- (Opcional) remover banco para recriar do zero
 -- DROP DATABASE IF EXISTS ordemdelis;
 
-CREATE DATABASE IF NOT EXISTS ordemdelis
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_general_ci;
-
-USE ordemdelis;
+-- Banco de dados criado no painel do InfinityFree
 
 -- =========================================================
 -- Tabela: usuarios
