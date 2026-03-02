@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 return [
   'db' => [
-    'host' => 'sql307.infinityfree.com', // <-- Substitua pelo seu MySQL Hostname (ex: sql123.infinityfree.com)
+    'host' => 'sql301.infinityfree.com',
     'port' => 3306,
-    'name' => 'if0_41230729_ordemdelis', // <-- Substitua pelo nome do banco de dados criado
+    'name' => 'if0_41230729_ordemdelis',
     'user' => 'if0_41230729',
     'pass' => 'RiJxlb5LEZ1hit0',
     'charset' => 'utf8mb4',
