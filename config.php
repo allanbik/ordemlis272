@@ -8,7 +8,7 @@ return [
     'port' => 3306,
     'name' => 'if0_41230729_ordemdelis',
     'user' => 'if0_41230729',
-    'pass' => 'RiJxlb5LEZ1hit0',
+    'pass' => 'if0_41230729',
     'charset' => 'utf8mb4',
   ],
   'security' => [
